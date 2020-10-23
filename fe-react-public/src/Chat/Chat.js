@@ -8,7 +8,7 @@ const Chat = (props) => {
     setChatState((prevChatState) => update(prevChatState, { $push: [msg] }));
   };
 
-  const handleMsg = (evt) => {
+  const handleSocketMsg = (evt) => {
     var msgs = evt.data.split("\n");
     for (var i = 0; i < msgs.length; i++) {
       addMessage(msgs[i]);
@@ -19,8 +19,8 @@ const Chat = (props) => {
     console.log("this is only executed when it's created");
     const conn = new WebSocket("ws://localhost:8000/ws");
 
-    conn.onmessage = handleMsg;
-    conn.onopen = function (event) {
+    conn.onmessage = handleSocketMsg;
+    conn.onopen = (event) => {
       console.log("WebSocket is open now.");
     };
   }, []);
