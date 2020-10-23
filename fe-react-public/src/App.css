@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+
+}
+
+.StreamChat {
+  display: flex;
+  justify-content: space-between;
+}
